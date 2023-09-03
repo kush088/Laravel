@@ -1,0 +1,14 @@
+--- Way to create a new project
+  
+    --Using composer
+
+      laravel new (name)
+
+
+    --Using laravel 
+      
+
+      composer create-project laravel/laravel example-app
+      
+
+    
