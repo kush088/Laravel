@@ -4,3 +4,6 @@ DB_PORT=3386
 DB_DATABASE=crm(DATABASE NAME)
 DB_USENAME=root
 DB_PASSWORD=
+
+for clear configration cache: 
+     php artisan config:clear
