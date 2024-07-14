@@ -1,0 +1,69 @@
+(Form validation in Laravel)
+
+
+:-(blade)form.blade.php
+
+<div>
+    <h1>
+    <form method="POST" action="{{ route('userpost.form') }}">
+        @csrf
+        <input type="text" id="username" name="username" placeholder="Enter Your User Name"><br>
+        <input type="email" id="email" name="email" placeholder="Enter Your Email"><br>
+        <input type="text" id="usercity" name="usercity" placeholder="Enter Your City Name"><br>
+        <div>
+            <input type="checkbox" name="skill" id="php" value="php">
+            <label for="php">php</label>
+            <br>
+            
+            <input type="checkbox" name="skill" id="java" value="java">
+            <label for="java">java</label>
+            <br>
+
+            <input type="checkbox" name="skill" id="node" value="node">
+            <label for="node">node</label>
+        </div>
+
+
+
+        <button type="submit">Submit</button>
+    </form>
+
+        
+    </h1>
+</div>
+
+:-(Controller)FormController
+
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class FormController extends Controller
+{
+    function showuserform()
+    {
+        return view('form');
+    }
+    function postuserform(Request $request)
+    {
+        $request->validate([
+            'username'=>'Required'
+	    'email'=>'Required',
+	     'Usercity'=>'Required',
+	    'skill'=>'Required',
+        ]);
+    return $requird;
+        
+    }
+}
+
+:-(Route)Web.php
+
+Route::get('/form',[FormController::class,'showuserform'])->name('usershow.form');
+
+Route::post('/form',[FormController::class,'postuserform'])->name('userpost.form');
+
+
+
