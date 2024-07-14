@@ -5,6 +5,14 @@
 
 <div>
     <h1>
+ 
+@if($errors->any())
+@foreach($errors->all() as $error)
+<div>
+  {{$error}}
+</div>
+@endforeach
+@endif
     <form method="POST" action="{{ route('userpost.form') }}">
         @csrf
         <input type="text" id="username" name="username" placeholder="Enter Your User Name"><br>
