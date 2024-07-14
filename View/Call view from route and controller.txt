@@ -1,0 +1,22 @@
+Call view from route and controller
+(web file)-Route
+
+Route::view('/home','home');
+Route::view('/about','about');
+
+Route::get('user-home[UserController::class,'userhome']');
+
+
+
+
+(Controller file)
+
+class UserController extends Controller{
+
+
+	function UserHome(){
+
+	return view('home');
+
+}
+

@@ -1,0 +1,15 @@
+(How to check View exist or not)
+use Illuminate\support\facades\view;
+
+
+class Usercontroller extends Controller
+{
+	function UserHome(){
+	if(View::exists('admin-signup')){
+	return view('admin.signup');
+	}
+	else{
+	echo "No view Found";
+
+
+}

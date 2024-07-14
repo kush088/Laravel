@@ -1,0 +1,24 @@
+create nested view and call
+
+(admin folder)- php artisan make:view admin.login
+      |
+      V
+ (login.blade.php)
+
+
+
+(controller)
+
+class userController extends Controller{
+
+	function adminLogin(){
+
+	return view('admin.login');
+
+}
+
+(Route-web.php)
+
+Route::get('admin-login',[useController::class,'adminLogin'])
+
+

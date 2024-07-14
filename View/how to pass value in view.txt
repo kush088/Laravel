@@ -1,0 +1,13 @@
+(Route file)
+
+Route::get('/about/{name}',function($name){
+    
+    return view('about',['name'=>$name]);
+});
+
+
+(view file)
+
+
+<h1>about</h1>
+<h1>{{$name}}</h1>

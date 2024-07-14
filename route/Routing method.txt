@@ -1,0 +1,17 @@
+Routing method:
+get->for view data
+post->store data
+put->store data
+patch->store/update
+delete->delete data
+
+Route::get('/',function(){
+	
+	return view(Welcome);
+});
+
+Route::get('/home',function(){
+
+	{{Welcome to homepage}}	//2ed method
+	echo"Welcome to homepages"; 
+});

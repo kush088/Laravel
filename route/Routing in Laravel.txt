@@ -1,0 +1,13 @@
+Routing in Laravel
+
+(Route file)
+
+Route::get('/home', function(){
+	
+	return view('home');	
+
+});
+
+(View file)
+
+<h1>Home page </h1>

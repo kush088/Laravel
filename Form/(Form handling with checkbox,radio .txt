@@ -1,0 +1,65 @@
+(Form handling with checkbox,radio button, and dropdown) 
+
+(Controller)
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class FormController extends Controller
+{
+     public function showuserform()
+    {
+        return view('userform');
+    }
+    public function postuserForm(Request $request)
+    {
+        return "user add";
+        
+    }
+   
+}
+
+(blade)
+<div>
+    <h1>User Skill</h1>
+<form action="{{Route('userpost.form')}}" method="post">
+    @csrf
+        <div>
+            <input type="checkbox" name="skill" id="php" value="php">
+            <label for="php">php</label>
+            <br>
+            
+            <input type="checkbox" name="skill" id="java" value="java">
+            <label for="java">java</label>
+            <br>
+
+            <input type="checkbox" name="skill" id="node" value="node">
+            <label for="node">node</label>
+        </div>
+        <div>
+            <input type="radio" name="gender" id="male" value="male">
+            <label for="">male</label>
+            
+            
+            <input type="radio" name="gender" id="female" value="female">
+            <label for="female">female</label>
+            <br>
+        </div>
+        <div>
+            <h1>City</h1>
+            <select name="city" id="">
+                <option value="delhi">delhi</option>
+                <option value="surat">surat</option>
+                <option value="ahamdabad">ahamdabad</option>
+            </select>
+        </div>
+        <button type="submit">Add user</button>
+        
+    </form>
+</div>
+
+(Route)
+Route::get('/userform', [FormController::class, 'showuserForm'])->name('usershow.form');
+Route::post('/userform', [FormController::class, 'postuserForm'])->name('userpost.form');

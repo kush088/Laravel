@@ -1,0 +1,56 @@
+Input field and Form Submit
+(Controller)
+
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class FormController extends Controller
+{
+    public function showForm()
+    {
+        return view('form');
+    }
+
+    public function postForm(Request $request)
+    {
+
+        
+        return redirect()->back()->with('message', 'Form is posted!');
+    }
+}
+
+(Route)
+
+<?php
+use App\Http\Controllers\FormController;
+use Illuminate\Support\Facades\Route;
+
+Route::get('/', function () {
+    return view('welcome');
+});
+Route::get('/form', [FormController::class, 'showForm'])->name('show.form');
+Route::post('/form', [FormController::class, 'postForm'])->name('post.form');
+
+(Blade)
+<html>
+<head>
+    <title>Post Form</title>
+</head>
+<body>
+    <form method="POST" action="{{ route('post.form') }}">
+        @csrf
+        <label for="message">Enter your message:</label><br>
+        <input type="text" id="message" name="message"><br><br>
+        <button type="submit">Submit</button>
+    </form>
+    @if(session('message'))
+        <p>{{ session('message') }}</p>
+    @endif
+</body>
+</html>
+
+
+
