@@ -1,0 +1,68 @@
+(Custom  validation )
+
+php artisan make :rule uppercase
+
+(uppercase.php)
+<?php
+
+namespace App\Rules;
+
+use Closure;
+use Illuminate\Contracts\Validation\ValidationRule;
+
+class uppercase implements ValidationRule
+{
+    /**
+     * Run the validation rule.
+     *
+     * @param  \Closure(string): \Illuminate\Translation\PotentiallyTranslatedString  $fail
+     */
+    public function validate(string $attribute, mixed $value, Closure $fail): void
+    {
+        if(strtoupper($value)!=$value)
+        {
+            $fail('the :attribute must be in uppercase');
+        }
+    }
+}
+
+(CONTROLLER)
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class FormController extends Controller
+{
+    function showuserform()
+    {
+        return view('form');
+    }
+    function postuserform(Request $request)
+    {
+       $request->validate([
+            'username'=>'Required | min:3 | max:15',
+            'email'=>'Required | email',
+            'usercity'=>'Required | uppercase',
+            'skill'=>'Required',
+
+
+
+       ],[
+        'username.required'=>'User name cannot be empty',
+        'username.min'=>'Username minimum character should be 3',
+        'username.max'=>'Username maximum character should be 15',
+        'email.email'=>'email is not valid',
+        'usercity.uppercase'=>'City name must be in Capital',
+
+
+       ]);
+        return $request;
+        
+    }
+}
+
+
+
+
