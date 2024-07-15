@@ -1,0 +1,11 @@
+(URL generation)
+
+function
+
+{{URL()->current()}}
+
+{{URL()->full()}}
+
+{{URL::previous()}}
+
+{{URL::to('aboout')}}
