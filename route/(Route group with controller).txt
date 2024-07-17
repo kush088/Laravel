@@ -1,0 +1,49 @@
+(Route group with controller)
+
+(web.php(Route))
+<?php
+
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StudentController;
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::controller(StudentController::class)->group(function()
+{
+Route::get('show','show');
+Route::get('add','add');
+Route::get('delete/{$name}','delete');
+
+});
+
+
+(Controller)
+
+
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class StudentController extends Controller
+{
+    function show()
+    {
+        return "List of student";
+    }
+    function add()
+    {
+        return "add Student";
+    }
+    function delete($name)
+    {
+        return $name;
+    }
+}
+
+
+
+
