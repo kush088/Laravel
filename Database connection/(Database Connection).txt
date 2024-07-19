@@ -1,0 +1,46 @@
+(Database Connection)
+
+(Env file)
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=laravel
+DB_USERNAME=root
+DB_PASSWORD=
+
+SESSION_DRIVER=file
+SESSION_LIFETIME=120
+SESSION_ENCRYPT=false
+SESSION_PATH=/
+SESSION_DOMAIN=null
+
+(Controller)
+
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
+class UserController extends Controller
+{
+    function users()
+    {
+        return DB::select('select*from users');
+    }
+}
+
+(Route)
+<?php
+
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+
+Route::get('/', function () {
+    return view('welcome');
+});
+Route::get('users',[UserController::class,'users']);
+
+    
